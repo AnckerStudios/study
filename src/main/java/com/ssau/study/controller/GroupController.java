@@ -6,6 +6,7 @@ import com.ssau.study.pojo.GroupPojo;
 import com.ssau.study.pojo.StudentPojo;
 import com.ssau.study.repository.StudentRepository;
 import com.ssau.study.service.GroupService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class GroupController {
     public GroupController(GroupService groupService){
         this.groupService = groupService;
     }
-
+    @RolesAllowed("ADMIN")
     @GetMapping("/count")
     public long count() {
         return groupService.count();
